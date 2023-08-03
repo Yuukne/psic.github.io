@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compartilhando Conhecimento</title>
+</head>
+<body>
+    <h1>Bem-vindo(a) ao Compartilhando Conhecimento de Psicologia 6 periodo!</h1>
+
+    <!-- Menu com botões para diferentes tipos de conteúdos -->
+    <button onclick="exibirTexto()">Sobre as Materias</button>
+	<button onclick="exibirAviso()">Avisos</button>
+    <button onclick="exibirDocumentos()">Documentos e atividades</button>
+    <button onclick="exibirImagens()">Imagens</button>
+
+    <div id="conteudo"></div>
+
+    <script>
+        function exibirTexto() {
+            const texto = `
+                <h2>Prática Integrativa I (Estágio Básico)</h2>
+                <p>
+                    Nessa matéria, você terá a oportunidade de iniciar suas atividades práticas como estagiário de psicologia. É uma fase importante para aplicar os conhecimentos teóricos em situações reais de atendimento e aprendizado junto a um supervisor. O estágio básico geralmente envolve observação e acompanhamento de casos.
+                </p>
+
+                <h2>Psicologia Escolar</h2>
+                <p>
+                    Nessa matéria, você aprenderá sobre o papel do psicólogo no contexto escolar. Serão abordados temas como orientação vocacional, dificuldades de aprendizagem, intervenções psicopedagógicas, aconselhamento a estudantes, professores e pais, além de programas de prevenção e promoção da saúde mental nas escolas.
+                </p>
+
+                <h2>Psicoterapia Infantil</h2>
+                <p>
+                    Essa disciplina foca no atendimento psicoterapêutico de crianças. Você aprenderá técnicas e abordagens específicas para trabalhar com pacientes infantis, considerando as particularidades do desenvolvimento infantil, como a comunicação não verbal e a utilização de jogos e brincadeiras terapêuticas.
+                </p>
+
+                <h2>Psiquiatria Básica</h2>
+                <p>
+                    Nessa matéria, você será apresentado aos fundamentos da psiquiatria e dos principais transtornos mentais. Entenderá conceitos como diagnóstico, tratamento farmacológico e abordagens terapêuticas complementares ao trabalho do psicólogo.
+                </p>
+
+                <h2>Responsabilidade Socioambiental</h2>
+                <p>
+                    Essa matéria aborda a importância da psicologia no contexto das questões socioambientais. Você aprenderá sobre a relação entre o comportamento humano e o meio ambiente, além de refletir sobre a responsabilidade do psicólogo em promover práticas sustentáveis e conscientes.
+                </p>
+
+                <h2>Técnicas de Grupo e Relações Humanas</h2>
+                <p>
+                    Nessa disciplina, você estudará diferentes técnicas de dinâmica de grupo e relações humanas, aplicadas em contextos terapêuticos, educacionais e organizacionais. Aprenderá como conduzir grupos terapêuticos e de apoio, bem como melhorar a comunicação e as relações interpessoais.
+                </p>
+
+                <h2>Técnicas Psicanalíticas</h2>
+                <p>
+                    Nessa matéria, você se aprofundará na teoria e prática da psicanálise. Aprenderá sobre a técnica psicanalítica, a interpretação dos sonhos, a análise do inconsciente e o trabalho com a transferência e a contratransferência.
+                </p>
+            `;
+            exibirConteudo(texto);
+        }
+		
+		function exibirAviso() {
+            const texto = `
+                <h2>O Alysson Saiu da instituição!</h2>
+                <p>
+                   Em sua despedida o mesmo deixou uma mensagem calorosa que está mencionada abaixo.
+				</p>
+				
+				<p>  
+				  Boa noite! 
+
+				Meus caríssimos e amados colegas, com os quais pude conviver,  trabalhar e servir durante alguns anos.
+				Quero informá-los que como tudo nesta Terra, existe um tempo predeterminado pelas forças que o regem, sendo assim, o meu ciclo hoje se encerra na instituição.
+				Como uma folha que partiu de uma frondosa árvore, assim sou eu. Já vocês,  são como a propria árvore, viçosa e cheira de energia.  Desejo-lhes,  profundamente, que com este condão, frutifiquem por onde passarem e permeiem o caminho de vocês com muita luz e dedicação.
+				Agradeço aqui aos que a meu pedido ou não, me ajudaram, aos que me ensianaram a ter paciência e mansidão,  para aprender o tempo e a entrega de cada um. Com vocês aprendi muito, muito mesmo! (talvez nem imaginam rs). Por isso, os carregarei eternamente em meu coração. 
+				Deixo-lhes meu abraço,  fraterno e meu sorriso com os quais os recebi desde o dia em que assumi as coordenações de curso e posteriormente a coordenação academia, em 2022 e 2023, respectivamente.
+
+				Agradeço a oportunidade dada a mim e aos que acreditaram de forma direta e direta em meu potencial (sem citar nomes, para não esquecer ninguém).
+
+				Esta não é uma despedida, e sim, um até breve.
+
+				Como lembrança,  de um bom aprendizado, de tudo que a vida nos proporciona, o que vale é a caminhada, como diz Cora Coralina "O que vale na vida não é o ponto de partida e sim a caminhada. Caminhando e semeando, no fim, terás o que colher."
+
+				Muito obrigado pela acolhida. Obrigado por tudo!
+
+				Um abraço fraterno em todos!💚😘🫱🏼‍🫲🏼
+                </p>
+
+            `;
+            exibirConteudo(texto);
+        }
+
+        function exibirDocumentos() {
+            const documento = `<a href="link_para_seu_documento.pdf" target="_blank">Clique aqui para baixar o documento em PDF.</a>`;
+            exibirConteudo(documento);
+        }
+
+        function exibirImagens() {
+            const imagem = `<img src="img1.png" alt="Imagem ilustrativa">`;
+            exibirConteudo(imagem);
+        }
+
+        function exibirConteudo(conteudo) {
+            const divConteudo = document.getElementById("conteudo");
+            divConteudo.innerHTML = conteudo;
+        }
+    </script>
+</body>
+</html>
