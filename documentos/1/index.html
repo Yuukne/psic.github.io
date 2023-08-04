@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Arquivos PDf</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Arquivos PDF</h1>
+    <ul id="lista-arquivos">
+        <!-- A lista será preenchida dinamicamente pelo JavaScript -->
+    </ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/@octokit/rest@18/dist/octokit-rest.min.js"></script>
+    <script>
+        // Substitua "usuario" e "repositorio" pelo nome do usuário e do repositório no GitHub
+        const usuario = 'Yuukne';
+        const repositorio = 'psic.github.io/documentos/1/';
+
+        const octokit = new Octokit();
+
+        octokit.repos.getContent({
+            owner: usuario,
+            repo: repositorio,
+            path: ''
+        })
+        .then(response => {
+            const listaArquivos = response.data.filter(item => item.type === 'file' && item.name.endsWith('.pdf'));
+            const listaHTML = listaArquivos.map(arquivo => `<li><a href="${arquivo.download_url}" target="_blank">${arquivo.name}</a></li>`).join('');
+            document.getElementById('lista-arquivos').innerHTML = listaHTML;
+        })
+        .catch(error => {
+            console.error('Erro ao obter a lista de arquivos: ', error);
+        });
+    </script>
+</body>
+</html>
