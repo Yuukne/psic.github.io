@@ -37,10 +37,10 @@
     <script>
         // Substitua "usuario" e "repositorio" pelo nome do usuário e do repositório no GitHub
         const usuario = 'Yuukne';
-        const repositorio = 'psic.github.io/documentos/1/';
+        const repositorio = 'psic.github.io/documentos/1';
 
         // URL da API do GitHub para obter o conteúdo da pasta que contém os arquivos PDF
-        const apiUrl = `https://api.github.com/repos/${usuario}/${repositorio}/contents`;
+        const apiUrl = `https://api.github.com/repos/${usuario}/${repositorio}/`;
 
         fetch(apiUrl)
             .then(response => response.json())
