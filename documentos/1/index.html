@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Arquivos</title>
+    <title>Lista de Arquivos PDF</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,9 +29,30 @@
     </style>
 </head>
 <body>
-    <h1>Lista de Arquivos</h1>
+    <h1>Lista de Arquivos PDF</h1>
     <ul id="lista-arquivos">
-    <form action="nn.php" method="post" enctype="multipart/form-data">
+        <!-- A lista será preenchida dinamicamente pelo JavaScript -->
     </ul>
+
+    <script>
+        // Substitua "usuario" e "repositorio" pelo nome do usuário e do repositório no GitHub
+        const usuario = 'Yuukne';
+        const repositorio = 'psic.github.io/documentos/1/';
+
+        // URL da API do GitHub para obter o conteúdo da pasta que contém os arquivos PDF
+        const apiUrl = `https://api.github.com/repos/${usuario}/${repositorio}/contents`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const listaArquivos = data.filter(item => item.type === 'file' && item.name.endsWith('.pdf'));
+
+                const listaHTML = listaArquivos.map(arquivo => `<li><a href="${arquivo.download_url}" target="_blank">${arquivo.name}</a></li>`).join('');
+                document.getElementById('lista-arquivos').innerHTML = listaHTML;
+            })
+            .catch(error => {
+                console.error('Erro ao obter a lista de arquivos: ', error);
+            });
+    </script>
 </body>
 </html>
