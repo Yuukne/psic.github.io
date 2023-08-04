@@ -31,30 +31,7 @@
 <body>
     <h1>Lista de Arquivos</h1>
     <ul id="lista-arquivos">
-        <!-- A lista será preenchida dinamicamente pelo JavaScript -->
+    <form action="nn.php" method="post" enctype="multipart/form-data">
     </ul>
-
-    <script>
-        function atualizarLista() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var listaArquivos = JSON.parse(this.responseText);
-                    var listaHTML = '';
-
-                    listaArquivos.forEach(function(arquivo) {
-                        listaHTML += '<li><a href="' + arquivo.link + '">' + arquivo.nome + '</a></li>';
-                    });
-
-                    document.getElementById('lista-arquivos').innerHTML = listaHTML;
-                }
-            };
-            xhttp.open("GET", "lista_arquivos.php", true);
-            xhttp.send();
-        }
-
-        // Atualiza a lista de arquivos a cada 5 segundos (5000 milissegundos)
-        setInterval(atualizarLista, 5000);
-    </script>
 </body>
 </html>
