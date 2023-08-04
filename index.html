@@ -89,12 +89,20 @@
         }
 
         function exibirDocumentos() {
-            const documento = `<a href="link_para_seu_documento.pdf" target="_blank">Clique aqui para baixar o documento em PDF.</a>`;
+            const documento = `<ul>
+								<li><a href="Prática Integrativa I (Estágio Básico)/">Prática Integrativa I (Estágio Básico)</a></li>
+								<li><a href="Psicologia Escolar/">Psicologia Escolar</a></li>
+								<li><a href="Psicoterapia Infantil/">Psicoterapia Infantil</a></li>
+								<li><a href="Psiquiatria Básica/">Psiquiatria Básica</a></li>
+								<li><a href="Responsabilidade Socioambiental/">Responsabilidade Socioambiental</a></li>
+								<li><a href="Técnicas de Grupo e Relações Humanas/">Técnicas de Grupo e Relações Humanas</a></li>
+								<li><a href="Técnicas Psicanalíticas/">Técnicas Psicanalíticas</a></li>
+							  </ul>`;
             exibirConteudo(documento);
         }
 
         function exibirImagens() {
-            const imagem = <img src="https://yuukne.github.io/img1.png"`;
+            const imagem = `<img src="img1.png" alt="Imagem ilustrativa">`;
             exibirConteudo(imagem);
         }
 
