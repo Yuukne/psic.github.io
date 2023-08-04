@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Arquivos PDF</title>
+    <title>Lista de Arquivos PDf</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,25 +34,27 @@
         <!-- A lista será preenchida dinamicamente pelo JavaScript -->
     </ul>
 
+    <script src="https://cdn.jsdelivr.net/npm/@octokit/rest@18/dist/octokit-rest.min.js"></script>
     <script>
         // Substitua "usuario" e "repositorio" pelo nome do usuário e do repositório no GitHub
-        const usuario = 'Yuukne';
-        const repositorio = 'psic.github.io/documentos/1';
+        const usuario = 'usuario';
+        const repositorio = 'repositorio';
 
-        // URL da API do GitHub para obter o conteúdo da pasta que contém os arquivos PDF
-        const apiUrl = `https://api.github.com/repos/${usuario}/${repositorio}/`;
+        const octokit = new Octokit();
 
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                const listaArquivos = data.filter(item => item.type === 'file' && item.name.endsWith('.pdf'));
-
-                const listaHTML = listaArquivos.map(arquivo => `<li><a href="${arquivo.download_url}" target="_blank">${arquivo.name}</a></li>`).join('');
-                document.getElementById('lista-arquivos').innerHTML = listaHTML;
-            })
-            .catch(error => {
-                console.error('Erro ao obter a lista de arquivos: ', error);
-            });
+        octokit.repos.getContent({
+            owner: usuario,
+            repo: repositorio,
+            path: ''
+        })
+        .then(response => {
+            const listaArquivos = response.data.filter(item => item.type === 'file' && item.name.endsWith('.pdf'));
+            const listaHTML = listaArquivos.map(arquivo => `<li><a href="${arquivo.download_url}" target="_blank">${arquivo.name}</a></li>`).join('');
+            document.getElementById('lista-arquivos').innerHTML = listaHTML;
+        })
+        .catch(error => {
+            console.error('Erro ao obter a lista de arquivos: ', error);
+        });
     </script>
 </body>
 </html>
